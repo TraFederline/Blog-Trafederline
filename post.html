@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="post-title-tag">Blog Post</title>
+    <!--Icon-->
+    <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    // Add any customizations here
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .dark .bg-white {
+            background-color: #051d22;
+        }
+        .dark .text-gray-900 {
+            color: #e2e8f0;
+        }
+        .dark .text-gray-600 {
+            color: #cbd5e0;
+        }
+        .dark .hover\:bg-gray-100:hover {
+            background-color: #4a5568;
+        }
+        .dark .hover\:text-blue-600:hover {
+            color: #63b3ed;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50 transition-colors duration-300">
+    
+    <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-xl text-blue-600">Tra Federline</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">Home</a>
+                <a href="categories.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">Categories</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">About</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">Contact</a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900 dark:text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path id="themeIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300">
+                <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white dark:bg-gray-800 shadow-lg py-4 transition-colors duration-300">
+            <a href="index.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">Home</a>
+            <a href="categories.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">Categories</a>
+            <a href="about.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">About</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">Contact</a>
+            <button id="theme-toggle-mobile" class="w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path id="themeIconMobile" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                Toggle Theme
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        
+        <article class="prose lg:prose-xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md max-w-4xl transition-colors duration-300" data-aos="fade-up">
+            <img id="post-cover" class="w-full h-80 object-cover rounded-lg mb-6" src="" alt="Post cover image">
+            <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-2">
+                <span id="post-date" class="text-sm"></span>
+                <span class="text-xs">•</span>
+                <div id="post-tags" class="flex flex-wrap gap-2"></div>
+            </div>
+            <h1 id="post-title" class="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50"></h1>
+            <div id="post-content" class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed"></div>
+        </article>
+
+        <section class="mt-16" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-6 text-center">Related Posts</h2>
+            <div id="related-posts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Related posts will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="mt-16 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md max-w-4xl mx-auto transition-colors duration-300" data-aos="zoom-in">
+            <h2 class="text-2xl font-bold mb-6">Comments</h2>
+            <form id="comment-form" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50 transition-colors duration-300" required>
+                </div>
+                <div>
+                    <label for="comment" class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Comment</label>
+                    <textarea id="comment" name="comment" rows="4" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50 transition-colors duration-300" required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300 btn">Submit Comment</button>
+            </form>
+            <div id="comment-list" class="mt-8 space-y-6">
+                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg transition-colors duration-300">
+                    <p class="font-semibold text-gray-900 dark:text-gray-50">Khorne Vithy</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Aug 16, 2025</p>
+                    <p class="text-gray-700 dark:text-gray-300">Great post, Chitra! I'm also in my 2nd year and can relate to the struggles and fun of university life. Keep up the great work!</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 transition-colors duration-300" data-aos="fade-up" data-aos-delay="700">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Khorn Chitra. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="https://www.facebook.com/profile.php?id=61578296107997" class="text-gray-400 hover:text-white transition duration-300" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.873V15.75H9.728V12h-1.5V9.75h1.5V7.5a3.75 3.75 0 013.75-3.75h2.25V6h-2.25a.75.75 0 00-.75.75v1.5h2.25L13.5 12h-1.5v3.75h3.692C18.342 20.128 22 15.991 22 12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/broyc.gaming?igsh=M21qdzBqamJwbGdv" class="text-gray-400 hover:text-white transition duration-300" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.685.006 3.64.051.966.044 1.745.218 2.378.48.67.288 1.255.672 1.812 1.228.557.557.942 1.142 1.228 1.81.262.633.436 1.412.48 2.378.045.954.051 1.21.051 3.64s-.006 2.685-.051 3.64c-.044.966-.218 1.745-.48 2.378-.288.67-.672 1.255-1.228 1.812-.557.557-1.142.942-1.81 1.228-.633.262-1.412.436-2.378.48-.954.045-1.21.051-3.64.051s-2.685-.006-3.64-.051c-.966-.044-1.745-.218-2.378-.48-.67-.288-.672-1.255-1.228-1.812-.557-.557-.942-1.142-1.228-1.81-.262-.633-.436-1.412-.48-2.378-.045-.954-.051-1.21-.051-3.64s.006-2.685.051-3.64c.044-.966.218-1.745.48-2.378.288-.67.672-1.255 1.228-1.812.557-.557 1.142-.942 1.81-1.228.633-.262 1.412-.436 2.378-.48C9.626 2.006 9.882 2 12.315 2zm0-2C9.605 0 9.208.01 8.232.053c-1.02.046-1.78.224-2.427.485-.668.272-1.246.666-1.792 1.212s-.94.618-1.212 1.246c-.261.647-.439 1.407-.485 2.427-.043.976-.053 1.373-.053 4.085s.01 3.109.053 4.085c.046 1.02.224 1.78.485 2.427.272.668.666 1.246 1.212 1.792s.618.94 1.246 1.212c.647.261 1.407.439 2.427.485 1.02.043 1.419.053 4.085.053s3.065-.01 4.085-.053c1.02-.046 1.78-.224 2.427-.485.668-.272 1.246-.666 1.792-1.212s.94-.618 1.212-1.246c.261-.647.439-1.407.485-2.427.043-.976.053-1.373.053-4.085s-.01-3.109-.053-4.085c-.046-1.02-.224-1.78-.485-2.427-.272-.668-.666-1.246-1.212-1.792s-.618-.94-1.246-1.212c-.647-.261-1.407-.439-2.427-.485C15.395 0 15.003-.01 12.315-.01zm0 14.545c-2.484 0-4.5-2.016-4.5-4.5s2.016-4.5 4.5-4.5 4.5 2.016 4.5 4.5-2.016 4.5-4.5 4.5zm0-7.5c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm5.727-2.618a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://github.com/TraFederline" class="text-gray-400 hover:text-white transition duration-300" aria-label="GitHub">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.008-.865-.013-1.7-2.782.604-3.375-1.341-3.375-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.89 1.528 2.336 1.087 2.905.832.091-.645.348-1.087.633-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.092.39-1.984 1.03-2.68-.103-.252-.446-1.267.098-2.646 0 0 .84-.268 2.75 1.026.799-.222 1.644-.333 2.493-.337.848.004 1.693.115 2.492.337 1.91-1.294 2.748-1.026 2.748-1.026.546 1.379.202 2.394.099 2.646.64.696 1.028 1.588 1.028 2.68 0 3.842-2.336 4.686-4.564 4.935.358.308.674.915.674 1.848 0 1.336-.012 2.415-.012 2.742 0 .267.18.577.688.484C21.144 20.198 24 16.435 24 12.017 24 6.484 19.522 2 14 2H12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Dark mode toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeIconMobile = document.getElementById('themeIconMobile');
+
+        // Icon paths
+        const sunIconPath = "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z";
+        const moonIconPath = "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z";
+
+        // Update icons
+        function updateIcon(isDarkMode) {
+            if (isDarkMode) {
+                themeIcon.setAttribute('d', moonIconPath);
+                themeIconMobile.setAttribute('d', moonIconPath);
+            } else {
+                themeIcon.setAttribute('d', sunIconPath);
+                themeIconMobile.setAttribute('d', sunIconPath);
+            }
+        }
+
+        // Apply theme
+        function applyTheme(isDarkMode) {
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateIcon(isDarkMode);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isCurrentlyDark ? 'light' : 'dark');
+            applyTheme(!isCurrentlyDark);
+        }
+        
+        // Event listeners for theme toggle
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleBtnMobile.addEventListener('click', toggleTheme);
+
+        // Check theme on page load
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                applyTheme(true);
+            } else {
+                applyTheme(false);
+            }
+        })();
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Post data
+        const posts = [
+            {
+                id: 1,
+                title: 'My University NUCK',
+                date: 'Aug 15, 2025',
+                cover: 'https://nuck.edu.kh/images/historyNUCK/his1.jpg',
+                tags: ['Life', 'Education'],
+                excerpt: 'I’m now in my 2nd year and it’s been a wild ride of learning, challenges, and growth. This is a reflection on my experiences and what I’ve learned so far. From late-night study sessions to new friendships, every moment has shaped my journey. I am excited for what is next and hope to share more with you all.',
+                content: `<p>My university NUCK has been a whirlwind of new experiences and personal growth. In my second year, I'm finding a better balance between my studies and my hobbies. My classes in computer science are challenging but rewarding. I've joined a coding club and a book club, which has introduced me to many interesting people.</p>
+                <p>One of the biggest lessons I've learned is the importance of time management. Juggling coursework, projects, and a social life requires careful planning. I use a digital planner to keep track of deadlines and schedule my free time. It's not always easy, but the effort is worth it.</p>
+                <p>I also want to highlight the support system I've found here. My professors are incredibly helpful, and my friends are always there to cheer me on. University isn't just about grades; it's about the connections you make and the person you become. I'm looking forward to the rest of my time here and am optimistic about the future.</p>`
+            },
+            {
+                id: 2,
+                title: 'Why I Love Learning English',
+                date: 'Aug 10, 2025',
+                cover: 'https://www.shutterstock.com/image-vector/header-websites-about-learning-english-260nw-1588302319.jpg',
+                tags: ['Language', 'Learning'],
+                excerpt: 'English is not just a subject, but a key to unlocking new worlds, cultures, and opportunities. I want to share my passion...',
+                content: `<p>Learning English has opened up a world of possibilities for me. It's more than just a language; it's a bridge to connect with people from different countries and backgrounds. Through English, I can read international books, watch movies without subtitles, and access a vast amount of online content.</p>
+                <p>The process of learning is its own reward. I enjoy the challenge of expanding my vocabulary and improving my grammar. I practice by watching English-language YouTubers, listening to podcasts, and trying to speak in English as much as possible with friends.</p>
+                <p>My goal is to become fully fluent, not just for my career, but for personal enrichment. English has allowed me to express myself in new ways and think from different perspectives. I believe that language learning is a lifelong journey, and I’m excited for every step of the way.</p>`
+            },
+            {
+                id: 3,
+                title: 'Top 5 Games I Play in 2025',
+                date: 'Aug 5, 2025',
+                cover: 'https://i.ytimg.com/vi/-KVYBnjnO6w/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC8c93labwuwJ0YcGF9uzAtbmLl9Q',
+                tags: ['Games', 'Fun'],
+                excerpt: 'Gaming is my favorite way to relax and connect with friends. Here are the top five games that have my attention this year...',
+                content: `<p>When I need a break from studying, nothing beats a good gaming session. Here are my top 5 games I've been playing this year:</p>
+                <ol>
+                    <li><strong>Elden Ring:</strong> The world-building and challenging combat are incredible. I've spent countless hours exploring the Lands Between.</li>
+                    <li><strong>Stardew Valley:</strong> A peaceful and relaxing game that's perfect for unwinding. I love building my farm and interacting with the characters.</li>
+                    <li><strong>Valorant:</strong> The tactical gameplay and teamwork are addictive. It's my go-to game for playing with friends online.</li>
+                    <li><strong>The Legend of Zelda: Tears of the Kingdom:</strong> The creativity and freedom in this game are unmatched. I'm constantly amazed by what I can build.</li>
+                    <li><strong>Hades:</strong> The fast-paced action and amazing story keep me coming back for more, even after countless runs.</li>
+                </ol>
+                <p>Gaming has been a great way for me to de-stress and connect with people who share a similar interest. It's a fantastic hobby that I hope to continue for a long time.</p>`
+            },
+            {
+                id: 4,
+                title: 'How I Got Into Technology',
+                date: 'Jul 28, 2025',
+                cover: 'https://fsa2-assets.imgix.net/assets/iStock-1265176772.jpg?auto=compress%2Cformat&crop=focalpoint&domain=fsa2-assets.imgix.net&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&w=1280',
+                tags: ['Tech', 'Personal Story'],
+                excerpt: 'From my first computer to building my own website, the world of tech has always fascinated me. This is my personal story...',
+                content: `<p>My journey into technology began when I got my first computer. I was fascinated by how a machine could perform so many tasks. I started by learning simple things, like how to use different software and troubleshoot basic problems. My curiosity led me to explore further, and I began to learn about web development and coding.</p>
+                <p>The first website I ever built was a simple static page about my favorite hobbies. It was a small project, but the feeling of seeing my code come to life was exhilarating. Since then, I've dived deeper into programming languages like Python and JavaScript, and frameworks like Tailwind CSS.</p>
+                <p>I believe technology has the power to change the world, and I want to be a part of that. My goal is to use my skills to build tools and applications that can help people. This journey is just beginning, and I'm excited to see where it takes me.</p>`
+            },
+            {
+                id: 5,
+                title: 'Balancing Study and Free Time',
+                date: 'Jul 22, 2025',
+                cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/540442376_1593308512043360_5334431513116103386_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHf7Ldaz1Zej2LrTp91WMczo7ZjxO6ecVujtmPE7p5xWxVUQw5699VkOUNzv5LgNJ-asKZruPNOklAWzezO9yWo&_nc_ohc=0cDLUG-8BQUQ7kNvwF0M2ms&_nc_oc=Admw_Tt168jLzrEQ88ULy-Cb4aLrM7GJmoSyHq89nwAJQCXK1Mq9pONJKvXbwQKVY_8&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=G7OJMZ8bKS31RKvBdDbNWQ&oh=00_AfWY9oy9zwdS5w21W6cO_PBCsBiPsjujlGHVsSNPehr1Fw&oe=68B82CC4',
+                tags: ['Life', 'Productivity'],
+                excerpt: 'University life is busy, but finding a balance between academics and personal life is key to success and happiness. Here’s how I do it...',
+                content: `<p>University life is a constant balancing act. On one hand, you have demanding coursework and projects; on the other, you have personal commitments and the need for rest and relaxation. Over the past year, I've developed a few strategies to help me stay on track without burning out.</p>
+                <p>First, I prioritize my tasks. I use the Eisenhower Matrix to decide what is urgent and important. This helps me focus on what truly matters and avoids getting overwhelmed by a long to-do list. I also break down large assignments into smaller, more manageable tasks.</p>
+                <p>Second, I make sure to schedule my free time. I block out time in my calendar for hobbies, exercise, and social activities. This ensures I get a break and don’t feel guilty for not studying. It's important to recharge your batteries to maintain long-term productivity and well-being. Finding this balance is crucial to a healthy and successful university experience.</p>`
+            },
+            {
+                id: 6,
+                title: 'The Future of AI in Everyday Life',
+                date: 'Jul 15, 2025',
+                cover: 'https://images.ctfassets.net/lzny33ho1g45/66htcVa9cVmb0Qi82tXLGC/2ee85099eb977c4be48fd0c7aa7129f6/Group_12762.jpg?fm=jpg&q=31&fit=thumb&w=1520&h=760',
+                tags: ['AI', 'Tech', 'Future'],
+                excerpt: 'AI is no longer science fiction. It\'s rapidly becoming a part of our daily lives, from smartphones to smart homes. Let’s explore its future...',
+                content: `<p>Artificial Intelligence (AI) is no longer a concept from sci-fi movies; it's a rapidly evolving field that's already integrated into our daily lives. From the recommendation systems on streaming services to the voice assistants on our phones, AI is here to stay.</p>
+                <p>I believe the future of AI will focus on personalization and accessibility. We'll see more AI-powered tools that help us with everyday tasks, like organizing our schedules, managing our finances, and even creating art. However, it's also important to consider the ethical implications of this technology, such as data privacy and job displacement.</p>
+                <p>As a tech enthusiast, I'm excited about the potential of AI to solve complex problems and improve our quality of life. I believe that by understanding its capabilities and limitations, we can harness its power for the betterment of society. I look forward to contributing to this field in my career.</p>`
+            },
+            {
+                id: 7,
+                title: 'My Favorite Cambodian Food',
+                date: 'Jul 5, 2025',
+                cover: 'https://i.ytimg.com/vi/ySn0ZUQOhcI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDnvKzs4SDD8V_D2keGh9p4ak7_lQ',
+                tags: ['Food', 'Culture'],
+                excerpt: 'From Lok Lak to Bai Sach Chrouk, Cambodian cuisine is a feast for the senses. I’m excited to share some of my favorite dishes and the stories behind them.',
+                content: `<p>Cambodian food is an incredible mix of flavors, from sweet and savory to sour and spicy. As a proud Cambodian, I want to share some of my absolute favorite dishes that truly represent our rich culinary culture.</p>
+                <ol>
+                    <li><strong>Lok Lak (Shaking Beef):</strong> This is a classic! Tender pieces of marinated beef stir-fried with onions and served with a side of fresh lettuce, tomatoes, and a pepper-lime dipping sauce. It's simple but full of flavor.</li>
+                    <li><strong>Amok:</strong> A must-try! Amok is a creamy, curried fish dish steamed in a banana leaf cup. The texture is custardy, and the flavor is a delicate balance of lemongrass, galangal, and coconut milk.</li>
+                    <li><strong>Kuy Teav (Noodle Soup):</strong> The perfect comfort food. A clear, flavorful pork or beef broth with rice noodles, topped with thinly sliced meat, fresh herbs, and a sprinkle of fried garlic. It's a staple for breakfast.</li>
+                </ol>
+                <p>Cambodian food is more than just meals; it's a way of sharing stories and connecting with family and friends. I highly recommend trying these dishes if you ever get the chance!</p>`
+            },
+            {
+                id: 8,
+                title: 'Dreams for the Next 5 Years',
+                date: 'Jun 30, 2025',
+                cover: 'https://lettraining.com.au/work-study-and-life-balance/10tipsforsuccessfulstudying3op/',
+                tags: ['Goals', 'Future', 'Personal'],
+                excerpt: 'As a student now, I often think about where I want to be and what I want to achieve in the next five years. This post is a look into my future goals...',
+                content: `<p>It's important to set goals to stay motivated and on track. For the next five years, I have a few key aspirations that I'm working towards, both personally and professionally.</p>
+                <p>My primary goal is to complete my university degree and graduate with honors. I want to build a strong foundation in computer science and hopefully secure an internship at a tech company to gain real-world experience. I also plan to continue learning and building personal projects to strengthen my portfolio.</p>
+                <p>Beyond academics, I want to improve my fluency in English and maybe even learn a third language, like French or Mandarin. I also hope to travel and experience new cultures. Finally, I want to continue to build my blog and connect with more people who share my interests. It's a big list, but I'm excited to start checking off each item one by one.</p>`
+            },
+            {
+                id: 9,
+                    title: 'My Experience at School',
+                    date: 'Aug 27, 2025',
+                    cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/539933410_1591145518926326_1866873570471205624_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFGHjYEkgcGwlqOHR4KKDzKQvM63Qage2lC8zrdBqB7aW3r4M1pVMxRXQT8aY8KuTWJsHoRlA8BKh-gdGtJuYS0&_nc_ohc=U1weFG-kwnAQ7kNvwFKwl2M&_nc_oc=Adk9VTe7fz5_17A9OtNGYTbLqKt16wZQY60bfuIPGxWktgbMskj3gwp_OzzzbIPhUXE&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=c2DAb6fFYX6FAbMPdxlBng&oh=00_AfWPNPUo0gpS4I8RqgvuKtdZPOZdOs2BzlEHOkrRzKgNiA&oe=68B497DB',
+                    tags: ['Life', 'Skills', 'Education','Experience'],
+                    excerpt: 'I have gained diverse experience in education, technology, design, and inventory systems. This post highlights my NUCK and the skills I’ve built...',
+                    content: `
+                        <p>I have diverse experience across different fields, including education, IT, design, and stock management. I started my NUCK working at a <strong>Private School</strong> as a teaching assistant, where I supported academic activities and students.</p>
+
+                        <p>Later, I joined <strong>Chea Sim University of Kampong Cham</strong>, where I supported <strong>international teachers</strong> in teaching <strong>Economics</strong>. I also helped junior students learn <strong>Excel</strong> and <strong>MATLAB</strong> to improve their studies and research projects.</p>
+
+                        <p>In addition to teaching support, I explored <strong>Inventory & Stock Management Systems</strong>, gaining real-world skills in organizing, recording, and verifying stock. I also developed my <strong>design skills</strong> using tools like Canva, Photoshop, and CapCut, while exploring many <strong>AI tools</strong> to boost productivity and creativity.</p>
+
+                        <p>Along the way, I built strong knowledge of <strong>Microsoft Office (Word, Excel, PowerPoint, Access)</strong>, and I can even create <strong>basic-level systems</strong> to support workflows. I also have communication skills in <strong>English</strong>, which allows me to collaborate and learn effectively.</p>
+
+                        <p>These experiences shaped my ability to adapt, learn, and contribute to new projects. I’m excited to continue building on these skills and connecting with people who share my passions.</p>
+                    `
+            },
+            {
+                id: 10,
+                title: 'My Learning NUCK in Programming',
+                date: 'Aug 27, 2025',
+                cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/539975457_1593311855376359_719832898224466588_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEv5x1uURGDQZfY3LtuN52T_usIK9pvo1L-6wgr2m-jUqEN_bIyI3xTw-VWKissYTJ7LlvpbH6noCQ4tgcMaUbg&_nc_ohc=ELf0IQJipXYQ7kNvwEdHaow&_nc_oc=AdkBsI2qbU64AoMDajSCa4emuDrgqAsDAHBW0IRvkM5dRrxJTPSLa_yWjhEGKYQ7TCw&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=50f5DR_ISopHs8qqkazfbQ&oh=00_AfWkPomAUfdHSWXOw6dJjkFbupQYNg4XiVguH8l-saJELw&oe=68B82632',
+                tags: ['Programming', 'Tech Skills', 'Learning','Experience','Education'],
+                excerpt: 'Throughout my studies, I have explored various programming languages and technologies, from C and Java to modern tools like AI and SQL Server...',
+                content: `
+                    <p>During my learning journey, I have studied and practiced multiple programming languages and technologies that helped me build a strong foundation in computer science and software development.</p>
+                    
+                    <p><strong>Programming Languages:</strong> I started with <strong>C programming</strong>, then expanded to <strong>C++</strong> and <strong>C#</strong>, which gave me a deeper understanding of object-oriented programming. I also explored <strong>Java</strong> and <strong>Python</strong> for building applications and problem-solving.</p>
+                    
+                    <p><strong>Web Development:</strong> I learned the fundamentals of <strong>HTML</strong> and <strong>CSS</strong> to design and structure web pages, giving me the skills to create clean and responsive websites.</p>
+                    
+                    <p><strong>Database & Server:</strong> I practiced using <strong>SQL Server</strong> for managing and handling data, which is important for real-world applications and system development.</p>
+                    
+                    <p><strong>AI & Tools:</strong> Alongside programming, I explored various <strong>AI tools</strong> to support research, design, and automation, which enhanced my productivity and creativity.</p>
+                    
+                    <p>These experiences gave me a solid technical background, and I’m excited to continue learning and applying these skills to future projects and real-world applications.</p>
+                `
+            },
+            {
+            id: 11,
+
+            title: 'My Experience in Design',
+            date: 'Aug 30, 2025',
+            cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/540504654_1593330948707783_490397932016647726_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEr_sZhA3FvSCf0Klakdm6gSSikIwEK8yNJKKQjAQrzI9P9a1rgiQG1xhuXOnMx1OiueCXlevKWWdFmxRbTCdXV&_nc_ohc=yLPZ83xjfhsQ7kNvwHa8Bys&_nc_oc=Adn-w_2bdZUN0Y6oSSQxMipXLYqcL7641PUgC-NLwZzN-LBthsjBpu94wnAbxekU_no&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=NBFG4gVKUBDm7EuoUEm05A&oh=00_AfUJIcvJwimfWP4lXx_vM9hyx1_GhDtjIpQKaNQp0xacpg&oe=68B81D00',
+            tags: ['Design', 'Creativity', 'Experience'],
+            excerpt: 'Through practical experience, I worked with Adobe Photoshop, Canva, and other creative tools to design posters, social media content, and digital graphics...',
+            content: `
+                <p>Over time, I have gained valuable experience in digital design by working on different creative projects using modern design tools.</p>
+                
+                <p><strong>Adobe Photoshop:</strong> I used Photoshop to edit photos, create visual effects, and design professional-quality graphics. This experience taught me how to manage layers, apply filters, and produce visually appealing designs.</p>
+                
+                <p><strong>Canva:</strong> I actively worked with Canva to design posters, presentations, and social media content. It helped me develop creativity and improve my ability to communicate visually through simple and effective layouts.</p>
+                
+                <p><strong>Other Tools:</strong> In addition to Photoshop and Canva, I explored other design applications that allowed me to work on branding, creative content, and digital artwork.</p>
+                
+                <p>These practical experiences have strengthened my design skills, and I look forward to applying them to future projects, combining creativity with technical knowledge to deliver meaningful results.</p>
+            `
+            }
+            
+            
+        ];
+
+        // Function to render a post
+        function renderPost(post) {
+            document.getElementById('post-title-tag').textContent = post.title;
+            document.getElementById('post-title').textContent = post.title;
+            document.getElementById('post-date').textContent = post.date;
+            document.getElementById('post-cover').src = post.cover;
+            document.getElementById('post-cover').alt = `Cover image for ${post.title}`;
+            document.getElementById('post-content').innerHTML = post.content;
+            
+            const tagsContainer = document.getElementById('post-tags');
+            tagsContainer.innerHTML = '';
+            post.tags.forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 text-xs font-semibold px-2.5 py-0.5 rounded-full transition-colors duration-300';
+                tagSpan.textContent = tag;
+                tagsContainer.appendChild(tagSpan);
+            });
+        }
+
+        // Function to render related posts
+        function renderRelatedPosts(currentPostId) {
+            const relatedPostsContainer = document.getElementById('related-posts');
+            relatedPostsContainer.innerHTML = '';
+
+            const filteredPosts = posts.filter(p => p.id !== currentPostId);
+            const shuffled = filteredPosts.sort(() => 0.5 - Math.random());
+            const related = shuffled.slice(0, 3);
+
+            related.forEach(post => {
+                const postCard = document.createElement('a');
+                postCard.href = `post.html?post=${post.id}`;
+                postCard.className = 'card block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-colors duration-300';
+                postCard.setAttribute('data-aos', 'fade-up');
+
+                const tagsHtml = post.tags.map(tag => `<span class="bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 text-xs font-semibold px-2.5 py-0.5 rounded-full transition-colors duration-300">${tag}</span>`).join('');
+
+                postCard.innerHTML = `
+                    <img class="w-full h-48 object-cover" src="${post.cover.replace('800/400', '400/200')}" alt="Cover image for '${post.title}'">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-900 dark:text-gray-50 transition-colors duration-300">${post.title}</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 transition-colors duration-300">${post.date}</p>
+                        <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">${post.excerpt}</p>
+                        <div class="mt-4 flex flex-wrap gap-2">${tagsHtml}</div>
+                    </div>
+                `;
+                relatedPostsContainer.appendChild(postCard);
+            });
+        }
+
+        // Get post ID from URL and render content
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = parseInt(urlParams.get('post') || '1', 10);
+            const post = posts.find(p => p.id === postId);
+
+            if (post) {
+                renderPost(post);
+                renderRelatedPosts(postId);
+            } else {
+                document.getElementById('post-title').textContent = 'Post Not Found';
+                document.getElementById('post-content').innerHTML = '<p>The requested blog post could not be found.</p>';
+            }
+        });
+
+        // Handle comment form submission (static)
+        document.getElementById('comment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const comment = document.getElementById('comment').value;
+
+            if (name && comment) {
+                const newComment = document.createElement('div');
+                newComment.className = 'bg-gray-100 dark:bg-gray-700 p-4 rounded-lg transition-colors duration-300';
+                newComment.innerHTML = `
+                    <p class="font-semibold text-gray-900 dark:text-gray-50 transition-colors duration-300">${name}</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2 transition-colors duration-300">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                    <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">${comment}</p>
+                `;
+                document.getElementById('comment-list').prepend(newComment);
+                document.getElementById('comment-form').reset();
+            }
+        });
+    </script>
+</body>
+</html>

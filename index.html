@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra Federline - Personal Blog</title>
+    <!--Icon-->
+    <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .hero-text {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary dark:text-white">Tra Federline</a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">Home</a>
+                    <a href="categories.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">Categories</a>
+                    <a href="about.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">About</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">Contact</a>
+                </nav>
+                
+                <!-- Dark Mode Toggle -->
+                <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path id="themeIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-700 dark:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+                <nav class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">Home</a>
+                    <a href="categories.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">Categories</a>
+                    <a href="about.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">About</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary font-medium">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="hero-text text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Hi, I'm Khorn Chitra</h1>
+                    <p class="hero-text text-xl text-gray-600 dark:text-gray-300 mb-8">A student from Cambodia who loves tech, English, and games.</p>
+                    <a href="#latest-posts" class="hero-text inline-block bg-primary hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">Explore My Blog</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Posts -->
+        <section id="latest-posts" class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12" data-aos="fade-up">Latest Posts</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Post 1 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <a href="post.html">
+                            <img src="https://nuck.edu.kh/images/historyNUCK/his1.jpg" alt="My University NUCK" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>Aug 15, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>Life, Education</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">My University NUCK</h3>
+                                <p class="text-gray-600 dark:text-gray-300">I'm now in my 2nd year...</p>
+                                <button class="mt-4 text-primary font-medium hover:underline">Read More</button>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <!-- Post 2 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                        <a href="post.html">
+                            <img src="https://www.shutterstock.com/image-vector/header-websites-about-learning-english-260nw-1588302319.jpg" alt="Why I Love Learning English" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>Aug 10, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>Language, Learning</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Why I Love Learning English</h3>
+                                <p class="text-gray-600 dark:text-gray-300">English is not just a subject...</p>
+                                <button class="mt-4 text-primary font-medium hover:underline">Read More</button>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <!-- Post 3 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                        <a href="post.html">
+                            <img src="https://i.ytimg.com/vi/-KVYBnjnO6w/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC8c93labwuwJ0YcGF9uzAtbmLl9Q" alt="Top 5 Games I Play in 2025" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>Aug 5, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>Games, Fun</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Top 5 Games I Play in 2025</h3>
+                                <p class="text-gray-600 dark:text-gray-300">Gaming is my favorite way...</p>
+                                <button class="mt-4 text-primary font-medium hover:underline">Read More</button>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <!-- Post 4 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                        <a href="post.html">
+                            <img src="https://fsa2-assets.imgix.net/assets/iStock-1265176772.jpg?auto=compress%2Cformat&crop=focalpoint&domain=fsa2-assets.imgix.net&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&w=1280" alt="How I Got Into Technology" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>Jul 28, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>Tech, Personal Story</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">How I Got Into Technology</h3>
+                                <p class="text-gray-600 dark:text-gray-300">From my first computer...</p>
+                                <button class="mt-4 text-primary font-medium hover:underline">Read More</button>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <!-- Post 5 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                        <a href="post.html">
+                            <img src="https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/540442376_1593308512043360_5334431513116103386_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHf7Ldaz1Zej2LrTp91WMczo7ZjxO6ecVujtmPE7p5xWxVUQw5699VkOUNzv5LgNJ-asKZruPNOklAWzezO9yWo&_nc_ohc=0cDLUG-8BQUQ7kNvwF0M2ms&_nc_oc=Admw_Tt168jLzrEQ88ULy-Cb4aLrM7GJmoSyHq89nwAJQCXK1Mq9pONJKvXbwQKVY_8&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=G7OJMZ8bKS31RKvBdDbNWQ&oh=00_AfWY9oy9zwdS5w21W6cO_PBCsBiPsjujlGHVsSNPehr1Fw&oe=68B82CC4" alt="Balancing Study and Free Time" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>Jul 22, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>Life, Productivity</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Balancing Study and Free Time</h3>
+                                <p class="text-gray-600 dark:text-gray-300">University life is busy...</p>
+                                <button class="mt-4 text-primary font-medium hover:underline">Read More</button>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <!-- Post 6 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="350">
+                        <a href="post.html">
+                            <img src="https://media.licdn.com/dms/image/v2/D5612AQFh6TXOA4VWjQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1690096174732?e=2147483647&v=beta&t=VXHcVAf7knimfthgBEcu-VpFWBjkMmZi23AIyT0moJ8" alt="The Future of AI in Everyday Life" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>Jul 15, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>AI, Tech, Future</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">The Future of AI in Everyday Life</h3>
+                                <p class="text-gray-600 dark:text-gray-300">AI is no longer science fiction...</p>
+                                <button class="mt-4 text-primary font-medium hover:underline">Read More</button>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+                
+                <div class="text-center mt-12" data-aos="fade-up">
+                    <a href="categories.html" class="inline-block bg-primary hover:bg-blue-600 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">View All Posts</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Preview -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">About Me</h2>
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-6 md:mb-0">
+                            <img src="mypicture.png" alt="Khorn Chitra" class="rounded-full w-56 h-56 object-cover mx-auto shadow-lg">
+                        </div>
+                        <div class="md:w-2/3 md:pl-12">
+                            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                                I'm a passionate student from Cambodia with a deep interest in technology, language learning, and gaming. 
+                                Through this blog, I share my experiences, thoughts, and discoveries as I navigate through my academic NUCK and personal growth.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Tech Enthusiast</span>
+                                <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Language Learner</span>
+                                <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Gamer</span>
+                                <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Student</span>
+                            </div>
+                            <a href="about.html" class="inline-block bg-primary hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">Learn More About Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Subscribe to My Newsletter</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8">Get updates on my latest blog posts, insights, and discoveries in tech and learning.</p>
+                    
+                    <form class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:text-white" required>
+                        <button type="submit" class="bg-primary hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">Subscribe</button>
+                    </form>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">No spam, unsubscribe at any time.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-4">Khorn Chitra</h3>
+                    <p class="text-gray-400">Sharing my NUCK through tech, language learning, and gaming from Cambodia.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="categories.html" class="text-gray-400 hover:text-white transition-colors">Categories</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Me</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold mb-4">Connect With Me</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61578296107997" class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/broyc.gaming?igsh=M21qdzBqamJwbGdv" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338 3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="https://github.com/TraFederline" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400" data-aos="fade-up">
+                <p>&copy; 2025 Khorn Chitra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        // Check for saved theme preference or respect OS preference
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.setAttribute('d', 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

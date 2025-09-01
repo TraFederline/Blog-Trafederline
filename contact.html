@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Tra Federline</title>
+    <!--Icon-->
+    <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    // Add any customizations here
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .dark {
+            background-color: #1a202c;
+            color: #458deb;
+        }
+        .dark .bg-white {
+            background-color: #051d22;
+        }
+        .dark .text-gray-900 {
+            color: #e2e8f0;
+        }
+        .dark .text-gray-600 {
+            color: #cbd5e0;
+        }
+        .dark .hover\:bg-gray-100:hover {
+            background-color: #2d7aff;
+        }
+        .dark .hover\:text-blue-600:hover {
+            color: #63b3ed;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50 transition-colors duration-300">
+    
+    <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-xl text-blue-600">Tra Federline</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">Home</a>
+                <a href="categories.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">Categories</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">About</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300">Contact</a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900 dark:text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path id="themeIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300">
+                <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white dark:bg-gray-800 shadow-lg py-4 transition-colors duration-300">
+            <a href="index.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">Home</a>
+            <a href="categories.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">Categories</a>
+            <a href="about.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">About</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">Contact</a>
+            <button id="theme-toggle-mobile" class="w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path id="themeIconMobile" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                Toggle Theme
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        
+        <h1 class="text-4xl font-bold text-center mb-8" data-aos="fade-down">Contact Me</h1>
+
+        <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition-colors duration-300" data-aos="zoom-in">
+            <p class="text-center text-gray-700 dark:text-gray-300 mb-6">
+                Have a question, a suggestion, or just want to say hello? Fill out the form below or connect with me on social media. I'd love to hear from you!
+            </p>
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50 transition-colors duration-300" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50 transition-colors duration-300" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Message</label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50 transition-colors duration-300" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-md hover:bg-blue-700 transition duration-300">Send Message</button>
+            </form>
+        </div>
+
+        <div class="mt-8 text-center" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-4">Connect with Me</h2>
+            <div class="flex justify-center space-x-6">
+                <a href="https://www.facebook.com/profile.php?id=61578296107997" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition duration-300" aria-label="Facebook Profile">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.873V15.75H9.728V12h-1.5V9.75h1.5V7.5a3.75 3.75 0 013.75-3.75h2.25V6h-2.25a.75.75 0 00-.75.75v1.5h2.25L13.5 12h-1.5v3.75h3.692C18.342 20.128 22 15.991 22 12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/broyc.gaming?igsh=M21qdzBqamJwbGdv" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition duration-300" aria-label="Instagram Profile">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.685.006 3.64.051.966.044 1.745.218 2.378.48.67.288 1.255.672 1.812 1.228.557.557.942 1.142 1.228 1.81.262.633.436 1.412.48 2.378.045.954.051 1.21.051 3.64s-.006 2.685-.051 3.64c-.044.966-.218 1.745-.48 2.378-.288.67-.672 1.255-1.228 1.812-.557.557-1.142.942-1.81 1.228-.633.262-1.412.436-2.378.48-.954.045-1.21.051-3.64.051s-2.685-.006-3.64-.051c-.966-.044-1.745-.218-2.378-.48-.67-.288-.672-1.255-1.228-1.812-.557-.557-.942-1.142-1.228-1.81-.262-.633-.436-1.412-.48-2.378-.045-.954-.051-1.21-.051-3.64s.006-2.685.051-3.64c.044-.966.218-1.745.48-2.378.288-.67.672-1.255 1.228-1.812.557-.557 1.142-.942 1.81-1.228.633-.262 1.412-.436 2.378-.48C9.626 2.006 9.882 2 12.315 2zm0-2C9.605 0 9.208.01 8.232.053c-1.02.046-1.78.224-2.427.485-.668.272-1.246.666-1.792 1.212s-.94.618-1.212 1.246c-.261.647-.439 1.407-.485 2.427-.043.976-.053 1.373-.053 4.085s.01 3.109.053 4.085c.046 1.02.224 1.78.485 2.427.272.668.666 1.246 1.212 1.792s.618.94 1.246 1.212c.647.261 1.407.439 2.427.485 1.02.043 1.419.053 4.085.053s3.065-.01 4.085-.053c1.02-.046 1.78-.224 2.427-.485.668-.272 1.246-.666 1.792-1.212s.94-.618 1.212-1.246c.261-.647.439-1.407.485-2.427.043-.976.053-1.373.053-4.085s-.01-3.109-.053-4.085c-.046-1.02-.224-1.78-.485-2.427-.272-.668-.666-1.246-1.212-1.792s-.618-.94-1.246-1.212c-.647-.261-1.407-.439-2.427-.485C15.395 0 15.003-.01 12.315-.01zm0 14.545c-2.484 0-4.5-2.016-4.5-4.5s2.016-4.5 4.5-4.5 4.5 2.016 4.5 4.5-2.016 4.5-4.5 4.5zm0-7.5c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm5.727-2.618a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://github.com/TraFederline" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition duration-300" aria-label="GitHub Profile">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.008-.865-.013-1.7-2.782.604-3.375-1.341-3.375-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.89 1.528 2.336 1.087 2.905.832.091-.645.348-1.087.633-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.092.39-1.984 1.03-2.68-.103-.252-.446-1.267.098-2.646 0 0 .84-.268 2.75 1.026.799-.222 1.644-.333 2.493-.337.848.004 1.693.115 2.492.337 1.91-1.294 2.748-1.026 2.748-1.026.546 1.379.202 2.394.099 2.646.64.696 1.028 1.588 1.028 2.68 0 3.842-2.336 4.686-4.564 4.935.358.308.674.915.674 1.848 0 1.336-.012 2.415-.012 2.742 0 .267.18.577.688.484C21.144 20.198 24 16.435 24 12.017 24 6.484 19.522 2 14 2H12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 transition-colors duration-300" data-aos="fade-up">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Khorn Chitra. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="https://www.facebook.com/profile.php?id=61578296107997" class="text-gray-400 hover:text-white transition duration-300" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.873V15.75H9.728V12h-1.5V9.75h1.5V7.5a3.75 3.75 0 013.75-3.75h2.25V6h-2.25a.75.75 0 00-.75.75v1.5h2.25L13.5 12h-1.5v3.75h3.692C18.342 20.128 22 15.991 22 12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/broyc.gaming?igsh=M21qdzBqamJwbGdv" class="text-gray-400 hover:text-white transition duration-300" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.685.006 3.64.051.966.044 1.745.218 2.378.48.67.288 1.255.672 1.812 1.228.557.557.942 1.142 1.228 1.81.262.633.436 1.412.48 2.378.045.954.051 1.21.051 3.64s-.006 2.685-.051 3.64c-.044.966-.218 1.745-.48 2.378-.288.67-.672 1.255-1.228 1.812-.557.557-1.142.942-1.81 1.228-.633.262-1.412.436-2.378.48-.954.045-1.21.051-3.64.051s-2.685-.006-3.64-.051c-.966-.044-1.745-.218-2.378-.48-.67-.288-.672-1.255-1.228-1.812-.557-.557-.942-1.142-1.228-1.81-.262-.633-.436-1.412-.48-2.378-.045-.954-.051-1.21-.051-3.64s.006-2.685.051-3.64c.044-.966.218-1.745.48-2.378.288-.67.672-1.255 1.228-1.812.557-.557 1.142-.942 1.81-1.228.633-.262 1.412-.436 2.378-.48C9.626 2.006 9.882 2 12.315 2zm0-2C9.605 0 9.208.01 8.232.053c-1.02.046-1.78.224-2.427.485-.668.272-1.246.666-1.792 1.212s-.94.618-1.212 1.246c-.261.647-.439 1.407-.485 2.427-.043.976-.053 1.373-.053 4.085s.01 3.109.053 4.085c.046 1.02.224 1.78.485 2.427.272.668.666 1.246 1.212 1.792s.618.94 1.246 1.212c.647.261 1.407.439 2.427.485 1.02.043 1.419.053 4.085.053s3.065-.01 4.085-.053c1.02-.046 1.78-.224 2.427-.485.668-.272 1.246-.666 1.792-1.212s.94-.618 1.212-1.246c.261-.647.439-1.407.485-2.427.043-.976.053-1.373.053-4.085s-.01-3.109-.053-4.085c-.046-1.02-.224-1.78-.485-2.427-.272-.668-.666-1.246-1.212-1.792s-.618-.94-1.246-1.212c-.647-.261-1.407-.439-2.427-.485C15.395 0 15.003-.01 12.315-.01zm0 14.545c-2.484 0-4.5-2.016-4.5-4.5s2.016-4.5 4.5-4.5 4.5 2.016 4.5 4.5-2.016 4.5-4.5 4.5zm0-7.5c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm5.727-2.618a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://github.com/TraFederline" class="text-gray-400 hover:text-white transition duration-300" aria-label="GitHub">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.008-.865-.013-1.7-2.782.604-3.375-1.341-3.375-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.89 1.528 2.336 1.087 2.905.832.091-.645.348-1.087.633-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.092.39-1.984 1.03-2.68-.103-.252-.446-1.267.098-2.646 0 0 .84-.268 2.75 1.026.799-.222 1.644-.333 2.493-.337.848.004 1.693.115 2.492.337 1.91-1.294 2.748-1.026 2.748-1.026.546 1.379.202 2.394.099 2.646.64.696 1.028 1.588 1.028 2.68 0 3.842-2.336 4.686-4.564 4.935.358.308.674.915.674 1.848 0 1.336-.012 2.415-.012 2.742 0 .267.18.577.688.484C21.144 20.198 24 16.435 24 12.017 24 6.484 19.522 2 14 2H12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Dark mode toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeIconMobile = document.getElementById('themeIconMobile');
+
+        // Icon paths
+        const sunIconPath = "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z";
+        const moonIconPath = "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z";
+
+        // Update icons
+        function updateIcon(isDarkMode) {
+            if (isDarkMode) {
+                themeIcon.setAttribute('d', moonIconPath);
+                themeIconMobile.setAttribute('d', moonIconPath);
+            } else {
+                themeIcon.setAttribute('d', sunIconPath);
+                themeIconMobile.setAttribute('d', sunIconPath);
+            }
+        }
+
+        // Apply theme
+        function applyTheme(isDarkMode) {
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateIcon(isDarkMode);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isCurrentlyDark ? 'light' : 'dark');
+            applyTheme(!isCurrentlyDark);
+        }
+        
+        // Event listeners for theme toggle
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleBtnMobile.addEventListener('click', toggleTheme);
+
+        // Check theme on page load
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                applyTheme(true);
+            } else {
+                applyTheme(false);
+            }
+        })();
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
