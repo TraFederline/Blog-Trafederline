@@ -57,6 +57,29 @@
         .btn {
             transition: background-color 0.3s;
         }
+        .comment-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .comment-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reaction-btn {
+            transition: all 0.2s ease;
+        }
+        .reaction-btn:hover {
+            transform: scale(1.1);
+        }
+        .reaction-btn.active {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 
@@ -130,11 +153,7 @@
                 <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300 btn">Submit Comment</button>
             </form>
             <div id="comment-list" class="mt-8 space-y-6">
-                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg transition-colors duration-300">
-                    <p class="font-semibold text-gray-900 dark:text-gray-50">Khorne Vithy</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Aug 16, 2025</p>
-                    <p class="text-gray-700 dark:text-gray-300">Great post, Chitra! I'm also in my 2nd year and can relate to the struggles and fun of university life. Keep up the great work!</p>
-                </div>
+                <!-- Comments will be loaded from localStorage -->
             </div>
         </section>
 
@@ -151,12 +170,12 @@
                 </a>
                 <a href="https://www.instagram.com/broyc.gaming?igsh=M21qdzBqamJwbGdv" class="text-gray-400 hover:text-white transition duration-300" aria-label="Instagram">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.685.006 3.64.051.966.044 1.745.218 2.378.48.67.288 1.255.672 1.812 1.228.557.557.942 1.142 1.228 1.81.262.633.436 1.412.48 2.378.045.954.051 1.21.051 3.64s-.006 2.685-.051 3.64c-.044.966-.218 1.745-.48 2.378-.288.67-.672 1.255-1.228 1.812-.557.557-1.142.942-1.81 1.228-.633.262-1.412.436-2.378.48-.954.045-1.21.051-3.64.051s-2.685-.006-3.64-.051c-.966-.044-1.745-.218-2.378-.48-.67-.288-.672-1.255-1.228-1.812-.557-.557-.942-1.142-1.228-1.81-.262-.633-.436-1.412-.48-2.378-.045-.954-.051-1.21-.051-3.64s.006-2.685.051-3.64c.044-.966.218-1.745.48-2.378.288-.67.672-1.255 1.228-1.812.557-.557 1.142-.942 1.81-1.228.633-.262 1.412-.436 2.378-.48C9.626 2.006 9.882 2 12.315 2zm0-2C9.605 0 9.208.01 8.232.053c-1.02.046-1.78.224-2.427.485-.668.272-1.246.666-1.792 1.212s-.94.618-1.212 1.246c-.261.647-.439 1.407-.485 2.427-.043.976-.053 1.373-.053 4.085s.01 3.109.053 4.085c.046 1.02.224 1.78.485 2.427.272.668.666 1.246 1.212 1.792s.618.94 1.246 1.212c.647.261 1.407.439 2.427.485 1.02.043 1.419.053 4.085.053s3.065-.01 4.085-.053c1.02-.046 1.78-.224 2.427-.485.668-.272 1.246-.666 1.792-1.212s.94-.618 1.212-1.246c.261-.647.439-1.407.485-2.427.043-.976.053-1.373.053-4.085s-.01-3.109-.053-4.085c-.046-1.02-.224-1.78-.485-2.427-.272-.668-.666-1.246-1.212-1.792s-.618-.94-1.246-1.212c-.647-.261-1.407-.439-2.427-.485C15.395 0 15.003-.01 12.315-.01zm0 14.545c-2.484 0-4.5-2.016-4.5-4.5s2.016-4.5 4.5-4.5 4.5 2.016 4.5 4.5-2.016 4.5-4.5 4.5zm0-7.5c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm5.727-2.618a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.685.006 3.64.051.966.044 1.745.218 2.378.48.67.288 1.255.672 1.812 1.228.557.557.942 1.142 1.228 1.81.262.633.436 1.412.480 2.378.045.954.051 1.21.051 3.64s-.006 2.685-.051 3.64c-.044.966-.218 1.745-.48 2.378-.288.67-.672 1.255-1.228 1.812-.557.557-1.142.942-1.81 1.228-.633.262-1.412.436-2.378.480-.954.045-1.21.051-3.64.051s-2.685-.006-3.64-.051c-.966-.044-1.745-.218-2.378-.48-.67-.288-.672-1.255-1.228-1.812-.557-.557-.942-1.142-1.228-1.81-.262-.633-.436-1.412-.48-2.378-.045-.954-.051-1.21-.051-3.64s.006-2.685.051-3.64c.044-.966.218-1.745.48-2.378.288-.67.672-1.255 1.228-1.812.557-.557 1.142-.942 1.81-1.228.633-.262 1.412-.436 2.378-.48C9.626 2.006 9.882 2 12.315 2zm0-2C9.605 0 9.208.01 8.232.053c-1.02.046-1.78.224-2.427.485-.668.272-1.246.666-1.792 1.212s-.94.618-1.212 1.246c-.261.647-.439 1.407-.485 2.427-.043.976-.053 1.373-.053 4.085s.01 3.109.053 4.085c.046 1.02.224 1.78.485 2.427.272.668.666 1.246 1.212 1.792s.618.94 1.246 1.212c.647.261 1.407.439 2.427.485 1.02.043 1.419.053 4.085.053s3.065-.01 4.085-.053c1.02-.046 1.78-.224 2.427-.485.668-.272 1.246-.666 1.792-1.212s.94-.618 1.212-1.246c.261-.647.439-1.407.485-2.427.043-.976.053-1.373.053-4.085s-.01-3.109-.053-4.085c-.046-1.02-.224-1.78-.485-2.427-.272-.668-.666-1.246-1.212-1.792s-.618-.94-1.246-1.212c-.647-.261-1.407-.439-2.427-.485C15.395 0 15.003-.01 12.315-.01zm0 14.545c-2.484 0-4.5-2.016-4.5-4.5s2.016-4.5 4.5-4.5 4.5 2.016 4.5 4.5-2.016 4.5-4.5 4.5zm0-7.5c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm5.727-2.618a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z" clip-rule="evenodd" />
                     </svg>
                 </a>
                 <a href="https://github.com/TraFederline" class="text-gray-400 hover:text-white transition duration-300" aria-label="GitHub">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.008-.865-.013-1.7-2.782.604-3.375-1.341-3.375-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.89 1.528 2.336 1.087 2.905.832.091-.645.348-1.087.633-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.092.39-1.984 1.03-2.68-.103-.252-.446-1.267.098-2.646 0 0 .84-.268 2.75 1.026.799-.222 1.644-.333 2.493-.337.848.004 1.693.115 2.492.337 1.91-1.294 2.748-1.026 2.748-1.026.546 1.379.202 2.394.099 2.646.64.696 1.028 1.588 1.028 2.68 0 3.842-2.336 4.686-4.564 4.935.358.308.674.915.674 1.848 0 1.336-.012 2.415-.012 2.742 0 .267.18.577.688.484C21.144 20.198 24 16.435 24 12.017 24 6.484 19.522 2 14 2H12z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.008-.865-.013-1.7-2.782.604-3.375-1.341-3.375-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.89 1.528 2.336 1.087 2.905.832.091-.645.348-1.087.633-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.092.39-1.984 1.03-2.68-.103-.252-.446-1.267.098-2.646 0 0 .84-.268 2.75 1.026.799-.222 1.644-.333 2.493-.337.848.004 1.693.115 2.492.337 1.91-1.294 2.748-1.026 2.748-1.026.546 1.379.202 2.394.099 2.646.64.696 1.028 1.588 1.028 2.680 0 3.842-2.336 4.686-4.564 4.935.358.308.674.915.674 1.848 0 1.336-.012 2.415-.012 2.742 0 .267.18.577.688.484C21.144 20.198 24 16.435 24 12.017 24 6.484 19.522 2 14 2H12z" clip-rule="evenodd" />
                     </svg>
                 </a>
             </div>
@@ -285,7 +304,7 @@
                 id: 5,
                 title: 'Balancing Study and Free Time',
                 date: 'Jul 22, 2025',
-                cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/544819161_1600560047984873_4767171751884332634_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFXOevab9ud9dZFz3wrC3h02r8gt-9oHgravyC372geCl6A1kjC7EMQE5U1X5zKpyTkomYbWBs9LeWXynZYSTx7&_nc_ohc=KcF3P7vl8fgQ7kNvwE-4kCb&_nc_oc=AdkqjJUuQMLvBXcC-Mmx6p1jwCJBL8E1YX8R7wwi-1uaQQYj9j7Ba1GQ4jTwUD_bzSc&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=qllviGgavSX0nxqiRk8hmQ&oh=00_AfY5HjfZtsLFctpwpeYzNJdDG-p78BDP5GSYV--gdOjPqQ&oe=68C47BEA',
+                cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/540442376_1593308512043360_5334431513116103386_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHf7Ldaz1Zej2LrTp91WMczo7ZjxO6ecVujtmPE7p5xWxVUQw5699VkOUNzv5LgNJ-asKZruPNOklAWzezO9yWo&_nc_ohc=0cDLUG-8BQUQ7kNvwF0M2ms&_nc_oc=Admw_Tt168jLzrEQ88ULy-Cb4aLrM7GJmoSyHq89nwAJQCXK1Mq9pONJKvXbwQKVY_8&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=G7OJMZ8bKS31RKvBdDbNWQ&oh=00_AfWY9oy9zwdS5w21W6cO_PBCsBiPsjujlGHVsSNPehr1Fw&oe=68B82CC4',
                 tags: ['Life', 'Productivity'],
                 excerpt: 'University life is busy, but finding a balance between academics and personal life is key to success and happiness. Here’s how I do it...',
                 content: `<p>University life is a constant balancing act. On one hand, you have demanding coursework and projects; on the other, you have personal commitments and the need for rest and relaxation. Over the past year, I've developed a few strategies to help me stay on track without burning out.</p>
@@ -333,7 +352,7 @@
                 id: 9,
                     title: 'My Experience at School',
                     date: 'Aug 27, 2025',
-                    cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/541408896_1593362908704587_8436203237510241881_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEhQIuBINf81xPbVGlj5l1cXKQ5sfur8hVcpDmx-6vyFYGuITBzjCLD6JZV1aksjPxQAxHzsAb0oCQW8Xc1vRkO&_nc_ohc=peqyWl-7Hf8Q7kNvwG1r9ST&_nc_oc=AdnFxk0XzTTIb7moKoQJ5g5U3-IqSbur-Df_eSNfxVavWVLlknz2zyk67o22oBDDhkU&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=NTIy9iVGP5-b55Uo4MebSw&oh=00_AfaBfd3TcVfxO1k6_utB-RGWXP7b3KQ-foGGaip9wDnwZQ&oe=68C18176',
+                    cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/539933410_1591145518926326_1866873570471205624_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFGHjYEkgcGwlqOHR4KKDzKQvM63Qage2lC8zrdBqB7aW3r4M1pVMxRXQT8aY8KuTWJsHoRlA8BKh-gdGtJuYS0&_nc_ohc=U1weFG-kwnAQ7kNvwFKwl2M&_nc_oc=Adk9VTe7fz5_17A9OtNGYTbLqKt16wZQY60bfuIPGxWktgbMskj3gwp_OzzzbIPhUXE&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=c2DAb6fFYX6FAbMPdxlBng&oh=00_AfWPNPUo0gpS4I8RqgvuKtdZPOZdOs2BzlEHOkrRzKgNiA&oe=68B497DB',
                     tags: ['Life', 'Skills', 'Education','Experience'],
                     excerpt: 'I have gained diverse experience in education, technology, design, and inventory systems. This post highlights my NUCK and the skills I’ve built...',
                     content: `
@@ -343,16 +362,16 @@
 
                         <p>In addition to teaching support, I explored <strong>Inventory & Stock Management Systems</strong>, gaining real-world skills in organizing, recording, and verifying stock. I also developed my <strong>design skills</strong> using tools like Canva, Photoshop, and CapCut, while exploring many <strong>AI tools</strong> to boost productivity and creativity.</p>
 
-                        <p>Along the way, I built strong knowledge of <strong>Microsoft Office (Word, Excel, PowerPoint, Access)</strong>, and I can even create <strong>basic-level systems</strong> to support workflows. I also have communication skills in <strong>English</strong>, which allows me to collaborate and learn effectively.</p>
+                        <p>Along the way, I built strong knowledge of <strong>Microsoft Office (Word, Excel, PowerPoint, Access)</strong>, and I can even create <strong>basic-level systems</strong> to support workflows. I also have communication skills in <strong>English</strong> which allows me to collaborate and learn effectively.</p>
 
-                        <p>These experiences shaped my ability to adapt, learn, and contribute to new projects. I’m excited to continue building on these skills and connecting with people who share my passions.</p>
+                        <p>These experiences shaped my ability to adapt, learn, and contribute to new projects. I'm excited to continue building on these skills and connecting with people who share my passions.</p>
                     `
             },
             {
                 id: 10,
                 title: 'My Learning NUCK in Programming',
                 date: 'Aug 27, 2025',
-                cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/544808626_1598843191489892_6705062844783453827_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG_hWjsE2Exr7KEmPcOHJ7lnlTQh9zOV7meVNCH3M5XuVUlmcb3LtPl24GPVh8y158SBVFgi47sed-NatF0fG9o&_nc_ohc=3wg29BAj_5YQ7kNvwFtIhZf&_nc_oc=Adl1SLkj2kL8xONWGf06RtcaFCqekGXjaS5zxiesEMatwCOscpSl9g1HMl_wsFl-HRo&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=VWznEszmpvOro9cUCCd4dw&oh=00_AfYNZ36eBJKLM0kLBR3rH4HFE7L-gN_wnNDHHagKiXQ4uw&oe=68C192B1',
+                cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/539975457_1593311855376359_719832898224466588_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEv5x1uURGDQZfY3LtuN52T_usIK9pvo1L-6wgr2m-jUqEN_bIyI3xTw-VWKissYTJ7LlvpbH6noCQ4tgcMaUbg&_nc_ohc=ELf0IQJipXYQ7kNvwEdHaow&_nc_oc=AdkBsI2qbU64AoMDajSCa4emuDrgqAsDAHBW0IRvkM5dRrxJTPSLa_yWjhEGKYQ7TCw&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=50f5DR_ISopHs8qqkazfbQ&oh=00_AfWkPomAUfdHSWXOw6dJjkFbupQYNg4XiVguH8l-saJELw&oe=68B82632',
                 tags: ['Programming', 'Tech Skills', 'Learning','Experience','Education'],
                 excerpt: 'Throughout my studies, I have explored various programming languages and technologies, from C and Java to modern tools like AI and SQL Server...',
                 content: `
@@ -366,7 +385,7 @@
                     
                     <p><strong>AI & Tools:</strong> Alongside programming, I explored various <strong>AI tools</strong> to support research, design, and automation, which enhanced my productivity and creativity.</p>
                     
-                    <p>These experiences gave me a solid technical background, and I’m excited to continue learning and applying these skills to future projects and real-world applications.</p>
+                    <p>These experiences gave me a solid technical background, and I'm excited to continue learning and applying these skills to future projects and real-world applications.</p>
                 `
             },
             {
@@ -374,7 +393,7 @@
 
             title: 'My Experience in Design',
             date: 'Aug 30, 2025',
-            cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/540504654_1593330948707783_490397932016647726_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEr_sZhA3FvSCf0Klakdm6gSSikIwEK8yNJKKQjAQrzI9P9a1rgiQG1xhuXOnMx1OiueCXlevKWWdFmxRbTCdXV&_nc_ohc=n4ufUxp5KZ8Q7kNvwG4dnnd&_nc_oc=Adn4qJRVP0RgXgH7YsDphOXa1owohZuOI_Od1uDHjnqLEQvjwFDiNYzSWHzjT1M-sGw&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=gys_TUVgWgS-Q7Vk8TALSg&oh=00_AfZy57uuSb5k7Cso3e7ceJHKJGyhODIn36L7u2zBUBGPBw&oe=68C18FC0',
+            cover: 'https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/540504654_1593330948707783_490397932016647726_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEr_sZhA3FvSCf0Klakdm6gSSikIwEK8yNJKKQjAQrzI9P9a1rgiQG1xhuXOnMx1OiueCXlevKWWdFmxRbTCdXV&_nc_ohc=yLPZ83xjfhsQ7kNvwHa8Bys&_nc_oc=Adn-w_2bdZUN0Y6oSSQxMipXLYqcL7641PUgC-NLwZzN-LBthsjBpu94wnAbxekU_no&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=NBFG4gVKUBDm7EuoUEm05A&oh=00_AfUJIcvJwimfWP4lXx_vM9hyx1_GhDtjIpQKaNQp0xacpg&oe=68B81D00',
             tags: ['Design', 'Creativity', 'Experience'],
             excerpt: 'Through practical experience, I worked with Adobe Photoshop, Canva, and other creative tools to design posters, social media content, and digital graphics...',
             content: `
@@ -480,6 +499,156 @@
             });
         }
 
+        // ==================== PERSISTENT COMMENT SYSTEM ====================
+
+        // DOM elements for comments
+        const commentForm = document.getElementById('comment-form');
+        const commentList = document.getElementById('comment-list');
+
+        // Function to get comments for a specific post from localStorage
+        function getCommentsForPost(postId) {
+            const allComments = JSON.parse(localStorage.getItem('blogComments')) || {};
+            return allComments[postId] || [];
+        }
+
+        // Function to save comments for a specific post to localStorage
+        function saveCommentsForPost(postId, comments) {
+            const allComments = JSON.parse(localStorage.getItem('blogComments')) || {};
+            allComments[postId] = comments;
+            localStorage.setItem('blogComments', JSON.stringify(allComments));
+        }
+
+        // Function to get reactions for comments
+        function getCommentReactions() {
+            return JSON.parse(localStorage.getItem('commentReactions')) || {};
+        }
+
+        // Function to save reactions for comments
+        function saveCommentReactions(reactions) {
+            localStorage.setItem('commentReactions', JSON.stringify(reactions));
+        }
+
+        // Function to handle reaction clicks
+        function handleReactionClick(postId, commentId, reactionType) {
+            const reactions = getCommentReactions();
+            const reactionKey = `${postId}-${commentId}`;
+            
+            if (!reactions[reactionKey]) {
+                reactions[reactionKey] = {};
+            }
+            
+            // Toggle reaction
+            if (reactions[reactionKey][reactionType]) {
+                delete reactions[reactionKey][reactionType];
+            } else {
+                reactions[reactionKey][reactionType] = true;
+            }
+            
+            saveCommentReactions(reactions);
+            loadComments(postId);
+        }
+
+        // Function to load and display comments for the current post
+        function loadComments(postId) {
+            const comments = getCommentsForPost(postId);
+            const reactions = getCommentReactions();
+            commentList.innerHTML = '';
+            
+            if (comments.length === 0) {
+                commentList.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-comment-slash text-4xl mb-3"></i>
+                        <p>No comments yet. Be the first to share your thoughts!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            comments.forEach((comment, index) => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'bg-gray-100 dark:bg-gray-700 p-4 rounded-lg comment-item fade-in transition-colors duration-300';
+                
+                const reactionKey = `${postId}-${index}`;
+                const commentReactions = reactions[reactionKey] || {};
+                
+                commentElement.innerHTML = `
+                    <p class="font-semibold text-gray-900 dark:text-gray-50 transition-colors duration-300">${comment.name}</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2 transition-colors duration-300">${new Date(comment.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                    <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">${comment.comment}</p>
+                    <div class="mt-3 flex space-x-2">
+                        <button class="reaction-btn ${commentReactions.like ? 'active text-blue-600' : 'text-gray-500'} transition-colors duration-300" data-reaction="like" data-comment-id="${index}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${commentReactions.like ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                            </svg>
+                            <span class="ml-1">Like</span>
+                        </button>
+                        <button class="reaction-btn ${commentReactions.love ? 'active text-red-600' : 'text-gray-500'} transition-colors duration-300" data-reaction="love" data-comment-id="${index}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${commentReactions.love ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            <span class="ml-1">Love</span>
+                        </button>
+                        <button class="reaction-btn ${commentReactions.laugh ? 'active text-yellow-600' : 'text-gray-500'} transition-colors duration-300" data-reaction="laugh" data-comment-id="${index}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${commentReactions.laugh ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="ml-1">Laugh</span>
+                        </button>
+                        <button class="reaction-btn ${commentReactions.celebrate ? 'active text-green-600' : 'text-gray-500'} transition-colors duration-300" data-reaction="celebrate" data-comment-id="${index}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${commentReactions.celebrate ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                            <span class="ml-1">Celebrate</span>
+                        </button>
+                    </div>
+                `;
+                
+                // Add event listeners to reaction buttons
+                const reactionButtons = commentElement.querySelectorAll('.reaction-btn');
+                reactionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const reactionType = button.getAttribute('data-reaction');
+                        handleReactionClick(postId, index, reactionType);
+                    });
+                });
+                
+                commentList.appendChild(commentElement);
+            });
+        }
+
+        // Handle comment form submission (persistent with localStorage)
+        commentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const commentText = document.getElementById('comment').value;
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = parseInt(urlParams.get('post') || '1', 10);
+
+            if (name && commentText) {
+                // Create new comment object
+                const newComment = {
+                    name: name,
+                    comment: commentText,
+                    date: new Date().toISOString()
+                };
+
+                // Get existing comments for this post
+                const comments = getCommentsForPost(postId);
+                
+                // Add new comment to the beginning of the array
+                comments.unshift(newComment);
+                
+                // Save updated comments to localStorage
+                saveCommentsForPost(postId, comments);
+                
+                // Reload comments to display the new one
+                loadComments(postId);
+                
+                // Reset the form
+                commentForm.reset();
+            }
+        });
+
         // Get post ID from URL and render content
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -489,34 +658,14 @@
             if (post) {
                 renderPost(post);
                 renderRelatedPosts(postId);
+                // Load comments for this post
+                loadComments(postId);
             } else {
                 document.getElementById('post-title').textContent = 'Post Not Found';
                 document.getElementById('post-content').innerHTML = '<p>The requested blog post could not be found.</p>';
             }
         });
 
-        // Handle comment form submission (static)
-        document.getElementById('comment-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const comment = document.getElementById('comment').value;
-
-            if (name && comment) {
-                const newComment = document.createElement('div');
-                newComment.className = 'bg-gray-100 dark:bg-gray-700 p-4 rounded-lg transition-colors duration-300';
-                newComment.innerHTML = `
-                    <p class="font-semibold text-gray-900 dark:text-gray-50 transition-colors duration-300">${name}</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2 transition-colors duration-300">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
-                    <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">${comment}</p>
-                `;
-                document.getElementById('comment-list').prepend(newComment);
-                document.getElementById('comment-form').reset();
-            }
-        });
     </script>
 </body>
-
 </html>
-
-
-
